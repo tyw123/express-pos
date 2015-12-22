@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=7" /><!--使得页面在IE8里面表现正常-->
+    <meta charset="utf-8"><!--使用UTF8编码-->
+    <link href="css/bootstrap.min.css" rel="stylesheet"><!--使用bootstrap-->
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <script type="text/javascript" src="lodash.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+            <img src="pic/images.png" class="img-rounded" width="90" alt="Responsive image">
+        </div>
+        <div class="col-md-3">
+            <div style="text-align:center;"><h1>没钱赚商店</h1></div>
+
+        </div>
+        <div class="col-md-2">
+            <p> </p>
+            <p>地址：花果山水帘洞361号</p>
+            <p>电话：0101001</p>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-default btn-sm  btn-block">  联系我们  </button>
+        </div>
+    </div>
+
+<script type="text/html" id="list">
+    <h2 class="sub-header">确认订单信息</h2>
+    <div class="table1">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>产品</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>小计</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.forEach(Receipt.item, function(Receipt) { %>
+            <tr>
+                <th><%- Receipt.name %></th>
+                <th><%- Receipt.price %></th>
+                <th><%- Receipt.num %></th>
+                <th><%- Receipt.total %></th>
+            </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <div class="table2">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>优惠</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>小计</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.forEach(Receipt.gift, function(Receipt) { %>
+            <tr>
+                <th><%- Receipt.name %></th>
+                <th><%- Receipt.price.toFixed(2) %></th>
+                <th><%- Receipt.num %></th>
+                <th><%- (Receipt.price*Receipt.num).toFixed(2) %></th>
+            </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <div class="table3">
+        <table class="table table-striped">
+            <tr>
+                <th>总商品金额</th>
+                <th>总优惠金额</th>
+                <th>应付金额</th>
+                <th> </th>
+            </tr>
+            <tr>
+                <th><%- (Number(Receipt.total)+Number(Receipt.saved)).toFixed(2) %></th>
+                <th><%- Receipt.total %></th>
+                <th><%- Receipt.saved %></th>
+                <th>
+                    <button type="button" class="btn btn-primary btn-sm  btn-block">  一键购买  </button>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <h2 class="sub-header">确认购买者信息</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>地址</th>
+                <th>支付方式</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+
+                <td>宝宝心里苦</td>
+                <td>吓倒本宝宝了</td>
+                <td>支付宝</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</script>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="shoplistapi.js"></script>
+</body>
+</html>
