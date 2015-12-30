@@ -71,12 +71,14 @@
             </thead>
             <tbody>
             <% _.forEach(Receipt.gift, function(Receipt) { %>
+
             <tr>
                 <th><%- Receipt.name %></th>
                 <th><%- Receipt.price.toFixed(2) %></th>
                 <th><%- Receipt.num %></th>
                 <th><%- (Receipt.price*Receipt.num).toFixed(2) %></th>
             </tr>
+
             <% }); %>
             </tbody>
         </table>
@@ -91,8 +93,8 @@
             </tr>
             <tr>
                 <th><%- (Number(Receipt.total)+Number(Receipt.saved)).toFixed(2) %></th>
-                <th><%- Receipt.total %></th>
                 <th><%- Receipt.saved %></th>
+                <th><%- Receipt.total %></th>
                 <th>
                     <button type="button" class="btn btn-primary btn-sm  btn-block">  一键购买  </button>
                 </th>

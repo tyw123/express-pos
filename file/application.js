@@ -9,6 +9,8 @@ $(document).ready(function(){
         item.push(temp);
         var itemp=JSON.stringify(item)
         localStorage.setItem("a",itemp);
+
+        $.ajax({url:"http://localhost:3000/itemp",type:"post",data:{"itemp":itemp}});debugger
         }
     });
     })

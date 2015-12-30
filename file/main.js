@@ -44,6 +44,9 @@ function getsaved(item,allsaved){
         }
         return temp;
     })//产生了一个顺序问题,功能上没有问题
+   // _.forEach(item, function(n){
+
+  //  });
     return gift;
 }
 function calprice(gift,item){
