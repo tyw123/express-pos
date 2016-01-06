@@ -1,17 +1,17 @@
 $(document).ready(function(){
     var allItems=[],allsaved=[],s;//,s;
   //  var s=JSON.parse(localStorage.getItem("a"));
-    $.ajax("http://localhost:3000/input").done(function(sss){
+    $.ajax("/input").done(function(sss){
         s=JSON.parse(sss);debugger
         input_temp=infodeal_1(s);
         item_temp=infodeal_2(input_temp);
-        $.ajax("http://localhost:3000/goods").done(function(sa){
+        $.ajax("/goods").done(function(sa){
             allItems=JSON.parse(sa);debugger
    //         allItems=sa;
            // console.log(allItems);
             item=getgoodinfo(item_temp,allItems);
            // console.log(item);
-            $.ajax("http://localhost:3000/forsave").done(function(haha){
+            $.ajax("/forsave").done(function(haha){
 //                console.log(haha);
                 allsaved=haha;debugger
   //              allsaved=JSON.parse(haha);debugger
