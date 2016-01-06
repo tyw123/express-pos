@@ -7,13 +7,16 @@ $(document).ready(function(){
         item_temp=infodeal_2(input_temp);
         $.ajax("http://localhost:3000/goods").done(function(sa){
             allItems=JSON.parse(sa);debugger
+   //         allItems=sa;
            // console.log(allItems);
             item=getgoodinfo(item_temp,allItems);
            // console.log(item);
             $.ajax("http://localhost:3000/forsave").done(function(haha){
-                allsaved=JSON.parse(haha);debugger
-              // console.log(allsaved);
-                gift=getsaved(item,allsaved);console.log(gift);
+//                console.log(haha);
+                allsaved=haha;debugger
+  //              allsaved=JSON.parse(haha);debugger
+//                console.log(allsaved);
+                gift=getsaved(item,allsaved);//console.log(gift);
                 Receipt=calprice(gift,item);
                 var compiled = _.template($("#list").text());debugger
                 var test=compiled({"Receipt":Receipt});debugger
