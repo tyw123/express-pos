@@ -34,10 +34,10 @@ function getsaved(item,allsaved){
    // allsaved=loadPromotions();
     var gift=[];//$.extend({}, item);
     gift=_.map(item,function(n){
-        num=_.indexOf(allsaved[0].barcodes,n.barcode)//不知道为什么这里_.findIndex用不了
+        num=_.indexOf(allsaved[0].barcode,n.barcode)//不知道为什么这里_.findIndex用不了
         temp=_.clone(n);debugger
         delete temp.total;
-        if(num>0){
+        if(num>=0){
             temp.num=parseInt(n.num/3);
         }else{
             temp.num=0;

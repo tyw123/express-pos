@@ -1,8 +1,8 @@
-var redis = require("redis")
-    , client = redis.createClient();
-    client.on("error", function (err) {
-        console.log("Error " + err);
-    });
+//var redis = require("redis")
+//    , client = redis.createClient();
+//    client.on("error", function (err) {
+//        console.log("Error " + err);
+//    });
 
 var express = require('express');
 var app = express();
@@ -49,9 +49,24 @@ var body = '';
 });
 
 app.get('/input', function (req, res) {
-  client.get("itemp",function (er, reply) {
-                  res.send(reply);//console.log(reply);
-                          });
+//  client.get("itemp",function (er, reply) {
+//                  res.send(reply);//console.log(reply);
+//                          });
+  var body = '';
+   http.get({
+          host: 'localhost',
+          port:'8080',
+          path: '/base/helloworld/input'
+      }, function(b) {
+          b.on('data', function(d) {
+                      body += d;
+                      console.log(body);
+                  });
+                  b.on('end', function() {
+
+                  res.send(body);debugger
+                  });
+      });
 });
 
 app.post('/itemp', function (req, res) {//req request  res  response 都是报文

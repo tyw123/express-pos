@@ -4,13 +4,13 @@ $(document).ready(function(){
     if($(this).data("barcode")!=undefined){
         var temp="";
          temp+=$(this).data("barcode");
-        var num=$(this).closest(".col-md-2").find(".quantity").val()
+        var num=$(this).closest(".col-md-2").find(".quantity").val();
         temp+="-"+num;
         item.push(temp);
         var itemp=JSON.stringify(item)
         localStorage.setItem("a",itemp);
-
-        $.ajax({url:"http://localhost:3000/itemp",type:"post",data:{"itemp":itemp}});debugger
+        console.log(temp);
+        $.ajax({url:"http://localhost:3000/itemp",type:"post",data:{"itemp":temp}});debugger
         }
     });
     })
