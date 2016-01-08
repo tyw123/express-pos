@@ -17,10 +17,12 @@ $(document).ready(function(){
   //              allsaved=JSON.parse(haha);debugger
 //                console.log(allsaved);
                 gift=getsaved(item,allsaved);//console.log(gift);
-                Receipt=calprice(gift,item);
-                var compiled = _.template($("#list").text());debugger
-                var test=compiled({"Receipt":Receipt});debugger
-                $(".row").after(test);debugger
+              //  Receipt=calprice(gift,item);
+                $.ajax("/receipt").done(function(rr){
+                   Receipt=JSON.parse(rr);debugger
+                   var compiled = _.template($("#list").text());debugger
+                   var test=compiled({"Receipt":Receipt});debugger
+                   $(".row").after(test);debugger});
             });
          });
     });

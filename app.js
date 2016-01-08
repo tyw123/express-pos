@@ -124,6 +124,28 @@ var body = '';
     });
 });
 
+app.get('/receipt', function (req, res) {
+var body = '';
+ http.get({
+        host: 'localhost',
+        port:'8080',
+        path: '/base/helloworld/receipt'
+    }, function(b) {
+        b.on('data', function(d) {
+                    body += d;
+                    console.log(body);
+                });
+                b.on('end', function() {
+                  var tt=typeof(body);
+                  var te=JSON.parse(body);
+                  var tte=typeof(te);
+                  console.log(tt);
+                  console.log(tte);
+                res.send(body);
+                });
+    });
+});
+
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
